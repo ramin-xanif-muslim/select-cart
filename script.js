@@ -35,7 +35,7 @@ function createCart(fruit) {
 
 function updateRandomCartName() {
     const randomFruit = fruits[Math.floor(Math.random() * fruits.length)];
-    ui.randomCartName.textContent = randomFruit.name + " tap";
+    ui.randomCartName.textContent = randomFruit.name;
 }
 
 function handleCartClick(event) {
