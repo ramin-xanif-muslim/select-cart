@@ -40,14 +40,7 @@ function updateRandomCartName() {
 
 function handleCartClick(event) {
     if (selectedCart) return;
-    if (attempt === 9) {
-        tryAgain();
-        const tryAgainButton = document.querySelector("#try-again");
-        if (tryAgainButton) {
-            tryAgainButton.addEventListener("click", () => {
-                window.location.reload();
-            });
-        }
+    if (attempt >= 10) {
         return;
     }
 
@@ -69,11 +62,21 @@ function handleCartClick(event) {
         clickedCart.classList.add("bg-red-300");
     }
 
-    setTimeout(resetGame, 1000);
+    if (attempt === 10) {
+        tryAgain();
+        const tryAgainButton = document.querySelector("#try-again");
+        if (tryAgainButton) {
+            tryAgainButton.addEventListener("click", () => {
+                window.location.reload();
+            });
+        }
+    } else {
+        setTimeout(resetGame, 1000);
+    }
 }
 
 function tryAgain() {
-    ui.randomCartName.innerHTML = ""
+    ui.randomCartName.innerHTML = "";
     ui.cartList.innerHTML = `
     <div class='w-full flex justify-center items-center'>
     <button id='try-again' class='bg-blue-300 px-4 py-2 rounded border-blue-700'>Yenidən cəhd edin</button>
